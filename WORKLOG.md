@@ -1,3 +1,10 @@
+Thursday: 
+Alice: Worked on History
+Si Ying: Worked on Variations
+
+Friday: Alice: Worked on History
+Si Ying: Worked on Variations
+
 https://cryptography.fandom.com/wiki/Feistel_cipher
 http://www.cs.man.ac.uk/~banach/COMP61411.Info/CourseSlides/Wk2.1.DES.pdf
 https://academic.csuohio.edu/yuc/security/Chapter_06_Data_Encription_Standard.pdf (talked about key generation)
