@@ -1,8 +1,8 @@
 Thursday: 
-Alice: Worked on History
+Alice: Worked on History;
 Si Ying: Worked on Variations
 
-Friday: Alice: Worked on History
+Friday: Alice: Worked on History;
 Si Ying: Worked on Variations
 
 https://cryptography.fandom.com/wiki/Feistel_cipher
