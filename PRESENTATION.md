@@ -1,6 +1,13 @@
 # History
+* The Feistel Cipher is a block cipher that recursively applies a round function.
+* Feistel cipher first gained respect when it was adopted by the US Government, and used within the National Security Agency.
+* The recursion of the feistel cipher makes the hardware for the cipher easier to implement.
+* While research shows that 3 rounds are enough for pseudorandom encryption, 4 rounds are enough for "strong" pseudorandom encryption. 
 
 # Strengths
+* Involution Property
+* Similar encryption and decryption algorithms
+* F does not have to be invertible
 
 # Weaknesses
 * Weak and semi-weak keys nat ve ysed. Block ciphers (Feistel cipher is the structure from which many block ciphers developed from) are often used in hash modes where the key input can be chosen by hackers in an attempt to find collisions.
