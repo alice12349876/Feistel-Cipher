@@ -17,4 +17,8 @@ def generateKey(p):
 
 # for i in range(16):
 def initialPermutation(s):
-    bitarray.bitarray()
+    arrayS = bitarray.bitarray(s)
+    perm = np.random.permutation(10)
+    arrayNew = []
+    for x in len(arrayS):
+        arrayNew[x] = (arrayS.get(perm[x]))
