@@ -17,13 +17,15 @@ def generateKey(p):
 def initialPermutation(s):
     bits = ""
     for char in s:
-        bits += (bin(ord(char)))[0:1] + (bin(ord(char)))[2:] + " "
+        bits += (bin(ord(char)))[0:1] + (bin(ord(char)))[2:]
+    # 64-bit input: loop through the bits, divie into groups of 64
+
+    # perform permutation. Need to think of ways of recovering this as part of decryption?
     return bits
 
     # sys.getsizeof() returns size of the string in bytes
     # n = sys.getsizeof(s)
     # 64-bit input
-
 
     # print(n)
     # return byteS
