@@ -1,14 +1,22 @@
-## Thursday
+## May 19th, Thursday
 Alice: Worked on History\
 Si Ying: Worked on Variations
 
-## Friday and Weekends
+## May 20th, 21st, 22nd, Friday and Weekends
 Alice: Worked on History\
 Si Ying: Worked on Variations and Weaknesses
 
-## Monday
+## May 23rd, Monday
 Alice: Worked on History and Strengths\
 Si Ying: Worked on Variations and Weaknesses
+
+## May 24th, Tuesday
+Alice: Did more research on encryption algorithms\
+Si Ying: Did more research on encryption algorithms
+
+## May 25th, Wednesday
+Alice: Worked on key generation and permutation algorithm\
+Si Ying: Worked on key generation and permutation algorithm
 
 ## Sources
 https://cryptography.fandom.com/wiki/Feistel_cipher\

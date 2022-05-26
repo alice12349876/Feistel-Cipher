@@ -1,7 +1,5 @@
 import random
-import bitarray
-
-shift
+import sys
 
 def generateKey(p):
     pass
@@ -17,8 +15,21 @@ def generateKey(p):
 
 # for i in range(16):
 def initialPermutation(s):
-    arrayS = bitarray.bitarray(s)
-    perm = np.random.permutation(10)
-    arrayNew = []
-    for x in len(arrayS):
-        arrayNew[x] = (arrayS.get(perm[x]))
+    bits = ""
+    for char in s:
+        bits += (bin(ord(char)))[0:1] + (bin(ord(char)))[2:] + " "
+    return bits
+
+    # sys.getsizeof() returns size of the string in bytes
+    # n = sys.getsizeof(s)
+    # 64-bit input
+
+
+    # print(n)
+    # return byteS
+    # arrayS = bitarray.bitarray(s)
+    # perm = np.random.permutation(10)
+    # arrayNew = []
+    # for x in len(arrayS):
+    #     arrayNew[x] = (arrayS.get(perm[x]))
+print(initialPermutation("abc"))
