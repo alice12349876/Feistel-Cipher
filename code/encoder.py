@@ -1,5 +1,24 @@
 import random
 import sys
+import codecs
+
+shiftTable = []
+for i in range(16):
+    if (i in [0, 1, 8, 15]):
+        shiftTable.append(1)
+    else:
+        shiftTable.append(2)
+
+paritDrop = []
+for i in range(16):
+    #
+    pass
+
+# print(shiftTable)
+key = bytes(sys.argv[1], encoding='utf-8')
+# print(key)
+hexify = codecs.getencoder('hex')
+print(hexify(key))
 
 def generateKey(p):
     pass
@@ -17,7 +36,7 @@ def generateKey(p):
 def initialPermutation(s):
     bits = ""
     for char in s:
-        bits += (bin(ord(char)))[0:1] + (bin(ord(char)))[2:]
+        bits += bin(ord(char))
     # 64-bit input: loop through the bits, divie into groups of 64
 
     # perform permutation. Need to think of ways of recovering this as part of decryption?
@@ -34,4 +53,5 @@ def initialPermutation(s):
     # arrayNew = []
     # for x in len(arrayS):
     #     arrayNew[x] = (arrayS.get(perm[x]))
-print(initialPermutation("abc"))
+# print((initialPermutation(key)))
+# print(len(initialPermutation(key)))
