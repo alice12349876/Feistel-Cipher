@@ -2,60 +2,6 @@ import random
 import sys
 import codecs
 
-shiftTable = []
-for i in range(16):
-    if (i in [0, 1, 8, 15]):
-        shiftTable.append(1)
-    else:
-        shiftTable.append(2)
-
-paritDrop = []
-for i in range(16):
-    #
-    pass
-
-# print(shiftTable)
-key = bytes(sys.argv[1], encoding='utf-8')
-# print(key)
-hexify = codecs.getencoder('hex')
-print(hexify(key))
-
-def generateKey(p):
-    pass
-
-    # may need modification
-    # num = bin(random.randint(0,2**p - 1))
-    # num = num[2:]
-    # while len(num) != p:
-    #     num = "0" + num
-    # keys.append(num)
-    # return num
-# print(generateKey(4))
-
-# for i in range(16):
-def initialPermutation(s):
-    bits = ""
-    for char in s:
-        bits += bin(ord(char))
-    # 64-bit input: loop through the bits, divie into groups of 64
-
-    # perform permutation. Need to think of ways of recovering this as part of decryption?
-    return bits
-
-    # sys.getsizeof() returns size of the string in bytes
-    # n = sys.getsizeof(s)
-    # 64-bit input
-
-    # print(n)
-    # return byteS
-    # arrayS = bitarray.bitarray(s)
-    # perm = np.random.permutation(10)
-    # arrayNew = []
-    # for x in len(arrayS):
-    #     arrayNew[x] = (arrayS.get(perm[x]))
-# print((initialPermutation(key)))
-# print(len(initialPermutation(key)))
-
 def initial Permutation(stringBit):
     initialArray = [58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 06, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7]
     newString = ""
