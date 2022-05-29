@@ -2,21 +2,46 @@ import random
 import sys
 import codecs
 
-def initial Permutation(stringBit):
-    initialArray = [58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 06, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7]
+#64 Bit -> 64 Bit
+#string to convert
+#Key to convert
+#string -> bit string
+
+def stringToBits(str):
+    stringBit = ""
+    for i in range(len(str)):
+        asciiValue = ord(str[i])  
+        binValue = bin(asciiValue)[2:]
+        for i in range(8 - len(binValue)):
+            binValue = "0" + binValue
+        stringBit = stringBit + binValue
+    return stringBit
+
+def bitsToString(str):
+    finString = ""
+    for i in range(len(str)/8):
+        asciiValue = int(str[i*8-8:i*8-1], 2)
+        finString = finString + chr(asciiValue)
+    return finString
+
+def initialPermutation(stringBit):
+    initialArray = [58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7]
     newString = ""
     for int i in range(64):
         newString = newString + stringBit[initialArray[i])]
     return newString
 
+#64 bit -> 64 bit
 def round(stringBit, curRound):
     a = stringBit[32:] + (ffunction(stringBit[32:], curRound) ^ stringBit[0:31])
+    return a
 
 def ffunction(right, curRound):
     a = expansion(right)
     a = a ^ generateKey(curRound)
     a = sbox(a)
     a = straightPerm(a)
+    return a
 
 def expansion(right):
     expanArray = [32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8, 9, 10, 11, 12, 13, 12, 13, 14, 15, 16, 17, 16, 17, 18, 19, 20, 21, 20, 21, 22, 23, 24, 25, 24, 25, 26, 27, 28, 29, 28, 29, 31, 31, 32, 1]
@@ -33,7 +58,8 @@ def sbox(a):
     for i in range(8):
         row = int(a[6*i-6] + a[6*i-1])
         column = int(a[6*i-5] + a[6*i-4] + a[6*i-3] + a[6*i-2])
-        newString = newString + bin((sboxArray[row])[column])
+        newString = newString + bin((sboxArray[row])[column])[2:]
+    return newString
 
 def straightPerm(a):
     permArray = [16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25]
