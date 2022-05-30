@@ -80,9 +80,11 @@ def sbox(a):
         # print(row)
         # print(column)
         # print(sboxArray[i-1][row][column])
+
         b = bin(sboxArray[i-1][row][column])[2:]
         while (len(b) < 4):
             b += "0"
+
         # print("-------")
         newString = newString + b
     # print(len(newString))
@@ -122,12 +124,12 @@ def parityDrop(keyBit):
         permutatedKey += keyBit[i-1]
     return permutatedKey
 
-# round will range from 1 to 16
+# round will range from 0 to 15
 def shiftLeft(keyBit, round):
     left = keyBit[:28]
     right = keyBit[28:]
     roundTable = [1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1]
-    shift = roundTable[round-1]
+    shift = roundTable[round]
     # rotate the left and right key
     newLeft = left[shift:] + left[0:shift]
     newRight = right[shift:] + right[0:shift]
@@ -192,7 +194,13 @@ if (len(key) == 64):
         s = finalPermutation(s)
         ansSegments.append(s)
     a = ''.join(ansSegments)
+    # print(len(ansSegments))
+    # print(len(a))
+    # print(a)
+    # print(a)
     print(bitsToString(a))
+    f = open("cipheredText.txt", "w")
+    f.write(a)
 
 else:
     print("Please enter a key of length 64 bits.")
