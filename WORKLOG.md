@@ -3,12 +3,12 @@ Alice: Worked on history\
 Si Ying: Worked on Variations
 
 ## May 20th, 21st, 22nd, Friday and Weekends
-Alice: Worked on History\
-Si Ying: Worked on Variations and Weaknesses
+Alice: Worked on Hhistory and strengths.\
+Si Ying: Worked on Variations and Weaknesses.
 
 ## May 23rd, Monday
-Alice: Worked on History and Strengths. \
-Si Ying: Worked on Variations and Weaknesses
+Alice: Worked on History and Strengths. Uploaded notes to presentation.\
+Si Ying: Worked on Variations and Weaknesses. Uploaded notes to presentation.
 
 ## May 24th, Tuesday
 Alice: Research encryption algorithms and the structure of the Feistel Cipher. \
