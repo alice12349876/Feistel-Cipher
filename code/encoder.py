@@ -128,6 +128,35 @@ def compressionBox(keyBit):
     return key
 
 # Feistel Cipher Simulation
+
+def encoder(plainText, key):
+    plainTextBits = stringToBits(plainText)
+    if (len(plainTextBits) % 64 != 0):
+        plainTextBits = plainTextBits + ""
+    finalBits = ""
+    keyBit = stringToBits(key)
+    for i in range(len(plainTextBits)/8):
+        x = initialPermutation(plainTextBits[8*i-8:8*i-1])
+        for i in range(16):
+            x = roundCalculation(x, i+1, keyBit)
+        x = finalPermutation(x)
+        finalBits = finalBits + x
+    return bitsToString(finalBits)
+
+def decoder(plainText, key):
+    plainTextBits = stringToBits(plainText)
+    if (len(plainTextBits) % 64 != 0):
+        plainTextBits = plainTextBits + ""
+    finalBits = ""
+    keyBit = stringToBits(key)
+    for i in range(len(plainTextBits)/8):
+        x = initialPermutation(plainTextBits[8*i-8:8*i-1])
+        for i in range(16):
+            x = roundCalculation(x, 16-i, keyBit)
+        x = finalPermutation(x)
+        finalBits = finalBits + x
+    return bitsToString(finalBits)
+
 try:
     plainText = stringToBits(sys.argv[1])
     # apend 0s to the end to make len(plainText) a multiple of 64. This will make the operations below easier to handle
