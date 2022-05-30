@@ -2,12 +2,7 @@ import random
 import sys
 import codecs
 
-#64 Bit -> 64 Bit
-#string to convert
-#Key to convert
-#string -> bit string
 
-# code for f function
 def stringToBits(str):
     stringBit = ""
     for i in range(len(str)):
