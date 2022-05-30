@@ -106,9 +106,9 @@ def finalPermutation(stringBit):
 # code for key generation
 # key of length 48 bits
 def generateKey(keyBit, round):
-    a = parityDrop(keyBit)
-    a = shiftLeft(a, round)
+    a = shiftLeft(keyBit, round)
     a = compressionBox(a)
+    print(a)
     return a
 
 def parityDrop(keyBit):
@@ -146,11 +146,12 @@ cipheredText = open("cipheredText.txt", "r").read()
 cipheredText = stringToBits(cipheredText)
 try:
     key = stringToBits(sys.argv[1])
+    key = parityDrop(key)
 except:
     print("Please follow this format: python3 decoder.py [Key of length 64 bits]")
 
 
-if (len(key) == 64):
+if (len(key) == 56):
     segments = []
     for i in range(int(len(cipheredText)/64)):
         segments.append(cipheredText[64*i:64*(i+1)])
@@ -162,6 +163,7 @@ if (len(key) == 64):
         # 16 rounds of f function
         for i in range(16):
             s = roundCalculation(s, 16-i-1, key)
+            key = shiftLeft(key, i)
         s = finalPermutation(s)
         ansSegments.append(s)
     a = ''.join(ansSegments)

@@ -16,7 +16,7 @@ def stringToBits(str):
 def bitsToString(str):
     finString = ""
     for i in range(int(len(str)/8)):
-        asciiValue = int(str[(i*8:i*8+8], 2)
+        asciiValue = int(str[i*8:i*8+8], 2)
         finString = finString + chr(asciiValue)
     return finString
 
@@ -110,6 +110,7 @@ def finalPermutation(stringBit):
 def generateKey(keyBit, round):
     a = shiftLeft(keyBit, round)
     a = compressionBox(a)
+    print(a)
     return a
 
 def parityDrop(keyBit):
@@ -178,7 +179,7 @@ except:
     print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
 
 # encoder using Feistel Cipher
-if (len(key) == 64):
+if (len(key) == 56):
     # divide plaintext into subgroups of 64
     segments = []
     for i in range(int(len(plainText)/64)):
