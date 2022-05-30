@@ -16,7 +16,7 @@ def stringToBits(str):
 def bitsToString(str):
     finString = ""
     for i in range(int(len(str)/8)):
-        asciiValue = int(str[i*8:i*8+8], 2)
+        asciiValue = int(str[(i*8:i*8+8], 2)
         finString = finString + chr(asciiValue)
     return finString
 
@@ -108,8 +108,7 @@ def finalPermutation(stringBit):
 # code for key generation
 # key of length 48 bits
 def generateKey(keyBit, round):
-    a = parityDrop(keyBit)
-    a = shiftLeft(a, round)
+    a = shiftLeft(keyBit, round)
     a = compressionBox(a)
     return a
 
@@ -174,6 +173,7 @@ try:
         for i in range(64-len(plainText)%64):
             plainText += "0"
     key = stringToBits(sys.argv[2])
+    key = parityDrop(key)
 except:
     print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
 
@@ -191,6 +191,7 @@ if (len(key) == 64):
         # 16 rounds of f function
         for i in range(16):
             s = roundCalculation(s, i, key)
+            key = shiftLeft(key, i)
         s = finalPermutation(s)
         ansSegments.append(s)
     a = ''.join(ansSegments)
