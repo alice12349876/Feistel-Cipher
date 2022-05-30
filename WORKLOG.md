@@ -1,5 +1,5 @@
 ## May 19th, Thursday
-Alice: Worked on History\
+Alice: Worked on history\
 Si Ying: Worked on Variations
 
 ## May 20th, 21st, 22nd, Friday and Weekends
@@ -7,7 +7,7 @@ Alice: Worked on History\
 Si Ying: Worked on Variations and Weaknesses
 
 ## May 23rd, Monday
-Alice: Worked on History and Strengths\
+Alice: Worked on History and Strengths. \
 Si Ying: Worked on Variations and Weaknesses
 
 ## May 24th, Tuesday
@@ -15,8 +15,29 @@ Alice: Did more research on encryption algorithms\
 Si Ying: Did more research on encryption algorithms
 
 ## May 25th, Wednesday
-Alice: Worked on key generation and permutation algorithm\
-Si Ying: Worked on key generation and permutation algorithm
+Alice: Worked on key generation and permutation algorithm. Finish a simpler version of encoder.\
+Si Ying: Worked on key generation and permutation algorithm. Finish a simpler version of encoder.
+
+## May 26th, Thursday
+Alice:\
+Si Ying:
+
+## May 27th, Friday
+Alice:\
+Si Ying:
+
+## May 28th, Saturday
+Alice: I reread the Feistel Cipher PDF and watched Youtube lectures to understand the final steps of the algorithm. I discussed the implementation and structure of the code with Si Ying and planned the functions we would use.\
+Si Ying: I reread the Feistel Cipher PDF and watched Youtube lectures to understand the final steps of the algorithm. I discussed the implementation and structure of the code with Alice and planned the functions we would use. 
+
+## May 29th, Sunday
+Alice: I coded the initial permutation and final permutation of the algorithm. I also coded the 4 parts of the f function: expansion, xor, 8 s-boxes, and straight permutation. I also worked on a string to bits (as a string) and bits (as a string) to string converter.\
+Si Ying: I debugged Alice's code, since the permutations counted bits starting at 1 while arrays in Python count bits starting at 0. I also added the key generation code, which consisted of a parity drop, shifting left, and compression box. I also implemented the Feistel Cipher by putting together our existing functions, and padding bits where strings are not a length of multiple 8.
+
+## May 30th, Monday
+Alice: I tested the code to make sure everything was running smoothly, and we did not miss any cases. I finished up my notes for the presentation, made the homework by taking our code and leaving parts blank for the class to fill in, and ran through everything.\
+Si Ying: I finished up debugging the code by fixing the s-box, coded the decoder, and tested the code to make sure we did not miss any cases. I also finished up my notes for the presentation, made the homework by taking our code and leaving parts blank for the class to fill in, and ran through everything.
+
 
 ## Sources
 https://cryptography.fandom.com/wiki/Feistel_cipher \
@@ -26,4 +47,4 @@ https://link.springer.com/content/pdf/10.1007%2F3-540-58108-1_26.pdf \
 https://www.hindawi.com/journals/mpe/2019/2390462/ \
 https://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm \
 https://www.youtube.com/watch?v=kPBJIhpcZgE \
-https://www.youtube.com/watch?v=l-7YW06BFNs \
+https://www.youtube.com/watch?v=l-7YW06BFNs 
