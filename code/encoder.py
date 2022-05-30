@@ -15,7 +15,7 @@ def stringToBits(str):
 
 def bitsToString(str):
     finString = ""
-    for i in range(len(str)/8):
+    for i in range(int(len(str)/8)):
         asciiValue = int(str[i*8-8:i*8-1], 2)
         finString = finString + chr(asciiValue)
     return finString
@@ -29,7 +29,7 @@ def initialPermutation(stringBit):
 
 #64 bit -> 64 bit
 def roundCalculation(stringBit, curRound, keyBit):
-    a = stringBit[32:] + (ffunction(stringBit[32:], curRound, keyBit) ^ stringBit[0:31])
+    a = stringBit[32:] + xor(ffunction(stringBit[32:], curRound, keyBit), stringBit[0:32])
     return a
 
 def ffunction(right, curRound, keyBit):
@@ -41,6 +41,8 @@ def ffunction(right, curRound, keyBit):
 
 def xor(str1, str2):
     s = ""
+    # print(len(str1))
+    # print(len(str2))
     for i in range(len(str1)):
         if str1[i]==str2[i]:
             s += "0"
@@ -56,6 +58,7 @@ def expansion(right):
     return newString
 
 def sbox(a):
+    # a is a 48 bit input
     # each S box corresponds to one group of 8-bit input
     sboxArray = [[[14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7], [0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8], [4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0], [4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0], [15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13]],
     [[15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10], [3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5], [0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15], [13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9]],
@@ -69,10 +72,20 @@ def sbox(a):
     newString = ""
     row = 0
     column = 0
-    for i in range(8):
-        row = int(a[6*i-6] + a[6*i-1])
-        column = int(a[6*i-5] + a[6*i-4] + a[6*i-3] + a[6*i-2])
-        newString = newString + bin(sboxArray[i][row][column] - 1)[2:] # NOT sure about -1 here; Note to Alice: double check
+    for i in range(1,9):
+        # binary to int for row and column index
+        row = int(a[6*i-6] + a[6*i-1], 2)
+        column = int(a[6*i-5] + a[6*i-4] + a[6*i-3] + a[6*i-2], 2)
+        # 4 bit output
+        # print(row)
+        # print(column)
+        # print(sboxArray[i-1][row][column])
+        b = bin(sboxArray[i-1][row][column])[2:]
+        while (len(b) < 4):
+            b += "0"
+        # print("-------")
+        newString = newString + b
+    # print(len(newString))
     return newString
 
 def straightPerm(a):
@@ -128,34 +141,29 @@ def compressionBox(keyBit):
     return key
 
 # Feistel Cipher Simulation
+# def encoder(plainTextBit, keyBit):
+#     finalBits = ""
+#     for i in range(len(plainTextBits)/8):
+#         x = initialPermutation(plainTextBits[8*i-8:8*i-1])
+#         for i in range(16):
+#             x = roundCalculation(x, i+1, keyBit)
+#         x = finalPermutation(x)
+#         finalBits = finalBits + x
+#     return bitsToString(finalBits)
 
-def encoder(plainText, key):
-    plainTextBits = stringToBits(plainText)
-    if (len(plainTextBits) % 64 != 0):
-        plainTextBits = plainTextBits + ""
-    finalBits = ""
-    keyBit = stringToBits(key)
-    for i in range(len(plainTextBits)/8):
-        x = initialPermutation(plainTextBits[8*i-8:8*i-1])
-        for i in range(16):
-            x = roundCalculation(x, i+1, keyBit)
-        x = finalPermutation(x)
-        finalBits = finalBits + x
-    return bitsToString(finalBits)
-
-def decoder(plainText, key):
-    plainTextBits = stringToBits(plainText)
-    if (len(plainTextBits) % 64 != 0):
-        plainTextBits = plainTextBits + ""
-    finalBits = ""
-    keyBit = stringToBits(key)
-    for i in range(len(plainTextBits)/8):
-        x = initialPermutation(plainTextBits[8*i-8:8*i-1])
-        for i in range(16):
-            x = roundCalculation(x, 16-i, keyBit)
-        x = finalPermutation(x)
-        finalBits = finalBits + x
-    return bitsToString(finalBits)
+# def decoder(plainText, key):
+#     plainTextBits = stringToBits(plainText)
+#     if (len(plainTextBits) % 64 != 0):
+#         plainTextBits = plainTextBits + ""
+#     finalBits = ""
+#     keyBit = stringToBits(key)
+#     for i in range(len(plainTextBits)/8):
+#         x = initialPermutation(plainTextBits[8*i-8:8*i-1])
+#         for i in range(16):
+#             x = roundCalculation(x, 16-i, keyBit)
+#         x = finalPermutation(x)
+#         finalBits = finalBits + x
+#     return bitsToString(finalBits)
 
 try:
     plainText = stringToBits(sys.argv[1])
@@ -167,9 +175,9 @@ try:
 except:
     print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
 
-
+# encoder using Feistel Cipher
 if (len(key) == 64):
-    #divide plain text into subgroups of 64
+    # divide plaintext into subgroups of 64
     segments = []
     for i in range(int(len(plainText)/64)):
         segments.append(plainText[64*i:64*(i+1)])
@@ -178,14 +186,13 @@ if (len(key) == 64):
     # perform Feistel Cipher for each segment
     for s in segments:
         s = initialPermutation(s)
-        for i in range(1):
+        # 16 rounds of f function
+        for i in range(16):
             s = roundCalculation(s, i, key)
         s = finalPermutation(s)
         ansSegments.append(s)
+    a = ''.join(ansSegments)
+    print(bitsToString(a))
 
 else:
     print("Please enter a key of length 64 bits.")
-
-
-
-# 16 round
