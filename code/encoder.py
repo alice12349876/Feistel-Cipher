@@ -110,6 +110,7 @@ def finalPermutation(stringBit):
 def generateKey(keyBit, round):
     a = shiftLeft(keyBit, round)
     a = compressionBox(a)
+    # print(round)
     print(a)
     return a
 
@@ -202,7 +203,7 @@ if (len(key) == 56):
     # print(a)
     print(bitsToString(a))
     f = open("cipheredText.txt", "w")
-    f.write(bitsToString(a))
+    f.write(a)
 
 else:
     print("Please enter a key of length 64 bits.")

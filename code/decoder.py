@@ -34,6 +34,7 @@ def roundCalculation(stringBit, curRound, keyBit):
 
 def ffunction(right, curRound, keyBit):
     a = expansion(right)
+    # a = xor(a, generateKey(keyBit, curRound))
     a = xor(a, keyBit)
     a = sbox(a)
     a = straightPerm(a)
@@ -122,7 +123,7 @@ def parityDrop(keyBit):
         permutatedKey += keyBit[i-1]
     return permutatedKey
 
-# round will range from 1 to 16
+# round will range from 0 to 15
 def shiftLeft(keyBit, round):
     left = keyBit[:28]
     right = keyBit[28:]
@@ -143,39 +144,47 @@ def compressionBox(keyBit):
 # decoder
 # read in cipheredText binary string
 cipheredText = open("cipheredText.txt", "r").read()
-cipheredText = stringToBits(cipheredText)
-try:
-    key = stringToBits(sys.argv[1])
-    key = parityDrop(key)
-except:
-    print("Please follow this format: python3 decoder.py [Key of length 64 bits]")
+# cipheredText = stringToBits(cipheredText)
+# try:
+#     key = stringToBits(sys.argv[1])
+#     key = parityDrop(key)
+# except:
+#     print("Please follow this format: python3 decoder.py [Key of length 64 bits]")
 
+keySchedule = ["111100001011111011100110000100001001111001110001", "111000001011111001110110111010000101000010001100",
+"111001001111111001110110100000000101001010101111", "111001101111011101110010100101100001101010100001",
+"111011101101011101110011100100100000101101110001", "111011111101001101011011000100111010101100010000",
+"001011111101001111011011011100010010010100010000", "001111110101100111011011011010010010000000001110",
+"000111110101101111011001000100101000011111100001", "000111110111100111011101000110101010110100000001",
+"000111110110110111001101011010100110010100010000", "010110110110110110101101011010010110000100001010",
+"110110011010110110101101111001000101000000001010", "110100011010111010101111110001000001001001101110",
+"111100011011111010100110100101001001101011101000", "111100001011111000101110010010010110010000001100"]
 
-if (len(key) == 56):
-    segments = []
-    for i in range(int(len(cipheredText)/64)):
-        segments.append(cipheredText[64*i:64*(i+1)])
+# if (len(key) == 56):
+segments = []
+for i in range(int(len(cipheredText)/64)):
+    segments.append(cipheredText[64*i:64*(i+1)])
 
-    ansSegments = []
-    # perform Feistel Cipher for each segment
-    for s in segments:
-        s = initialPermutation(s)
-        # 16 rounds of f function
-        for i in range(16):
-            s = roundCalculation(s, 16-i-1, key)
-            key = shiftLeft(key, i)
-        s = finalPermutation(s)
-        ansSegments.append(s)
-    a = ''.join(ansSegments)
-    # print(len(ansSegments))
-    # print(len(a))
-    # print(a)
-    # print(a)
-    print(bitsToString(a))
-    f = open("decipheredText.txt", "w")
-    f.write(bitsToString(a))
-else:
-    print("Please enter a key of length 64 bits.")
+ansSegments = []
+# perform Feistel Cipher for each segment
+for s in segments:
+    s = initialPermutation(s)
+    # 16 rounds of f function
+    for i in range(16):
+        s = roundCalculation(s, 15-i, keySchedule[15-i])
+        # key = shiftLeft(key, i)
+    s = finalPermutation(s)
+    ansSegments.append(s)
+a = ''.join(ansSegments)
+# print(len(ansSegments))
+# print(len(a))
+# print(a)
+# print(a)
+print(bitsToString(a))
+f = open("decipheredText.txt", "w")
+f.write(a)
+# else:
+#     print("Please enter a key of length 64 bits.")
 
 
 
