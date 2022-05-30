@@ -16,7 +16,7 @@ def stringToBits(str):
 def bitsToString(str):
     finString = ""
     for i in range(int(len(str)/8)):
-        asciiValue = int(str[i*8-8:i*8-1], 2)
+        asciiValue = int(str[i*8:i*8+8], 2)
         finString = finString + chr(asciiValue)
     return finString
 
@@ -83,7 +83,7 @@ def sbox(a):
 
         b = bin(sboxArray[i-1][row][column])[2:]
         while (len(b) < 4):
-            b += "0"
+            b = "0" + b
 
         # print("-------")
         newString = newString + b
@@ -200,7 +200,7 @@ if (len(key) == 64):
     # print(a)
     print(bitsToString(a))
     f = open("cipheredText.txt", "w")
-    f.write(a)
+    f.write(bitsToString(a))
 
 else:
     print("Please enter a key of length 64 bits.")
