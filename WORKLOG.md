@@ -11,12 +11,12 @@ Alice: Worked on History and Strengths. \
 Si Ying: Worked on Variations and Weaknesses
 
 ## May 24th, Tuesday
-Alice: Did more research on encryption algorithms\
-Si Ying: Did more research on encryption algorithms
+Alice: Research encryption algorithms and the structure of the Feistel Cipher. \
+Si Ying: Research on encryption algorithms and the structure of the Feistel Cipher. 
 
 ## May 25th, Wednesday
-Alice: Worked on key generation and permutation algorithm. Finish a simpler version of encoder.\
-Si Ying: Worked on key generation and permutation algorithm. Finish a simpler version of encoder.
+Alice: Worked on key generation and permutation algorithm. Finish a simpler version of encoder. Decide to tackle more complex version of Data Encryption Standard. \
+Si Ying: Worked on key generation and permutation algorithm. Finish a simpler version of encoder. Decide to tackle more complex version of Data Encryption Standard.
 
 ## May 26th, Thursday
 Alice:\
