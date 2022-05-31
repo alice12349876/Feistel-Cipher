@@ -34,7 +34,6 @@ def roundCalculation(stringBit, curRound, keyBit):
 
 def ffunction(right, curRound, keyBit):
     a = expansion(right)
-    # a = xor(a, generateKey(keyBit, curRound))
     a = xor(a, keyBit)
     a = sbox(a)
     a = straightPerm(a)
@@ -61,14 +60,14 @@ def expansion(right):
 def sbox(a):
     # a is a 48 bit input
     # each S box corresponds to one group of 8-bit input
-    sboxArray = [[[14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7], [0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8], [4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0], [4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0], [15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13]],
+    sboxArray = [[[14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7], [0, 15, 7, 4, 14, 2, 13, 10, 3, 6, 12, 11, 9, 5, 3, 8], [4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0], [15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13]],
     [[15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10], [3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5], [0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15], [13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9]],
     [[10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8], [13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1], [13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7], [1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12]],
     [[7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15], [13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9], [10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4], [3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14]],
     [[2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9], [14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6], [4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14], [11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3]],
     [[12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11], [10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8], [9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6], [4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13]],
     [[4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1], [13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6], [1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2], [6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12]],
-    [[13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7], [1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2], [7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8], [2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11]]
+    [[13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7], [1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 10, 14, 9, 2], [7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 10, 15, 3, 5, 8], [2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 9, 3, 5, 6, 11]]
     ]
     newString = ""
     row = 0
@@ -81,9 +80,11 @@ def sbox(a):
         # print(row)
         # print(column)
         # print(sboxArray[i-1][row][column])
+
         b = bin(sboxArray[i-1][row][column])[2:]
         while (len(b) < 4):
             b = "0" + b
+
         # print("-------")
         newString = newString + b
     # print(len(newString))
@@ -109,7 +110,7 @@ def finalPermutation(stringBit):
 def generateKey(keyBit, round):
     a = shiftLeft(keyBit, round)
     a = compressionBox(a)
-    print(a)
+    # print(round)
     return a
 
 def parityDrop(keyBit):
@@ -145,44 +146,43 @@ def compressionBox(keyBit):
 # read in cipheredText binary string
 cipheredText = open("cipheredText.txt", "r").read()
 # cipheredText = stringToBits(cipheredText)
-# try:
-#     key = stringToBits(sys.argv[1])
-#     key = parityDrop(key)
-# except:
-#     print("Please follow this format: python3 decoder.py [Key of length 64 bits]")
+try:
+    key = stringToBits(sys.argv[1])
+    key = parityDrop(key)
+except:
+    print("Please follow this format: python3 decoder.py [Key of length 64 bits]")
 
-keySchedule = ["111100001011111011100110000100001001111001110001", "111000001011111001110110111010000101000010001100",
-"111001001111111001110110100000000101001010101111", "111001101111011101110010100101100001101010100001",
-"111011101101011101110011100100100000101101110001", "111011111101001101011011000100111010101100010000",
-"001011111101001111011011011100010010010100010000", "001111110101100111011011011010010010000000001110",
-"000111110101101111011001000100101000011111100001", "000111110111100111011101000110101010110100000001",
-"000111110110110111001101011010100110010100010000", "010110110110110110101101011010010110000100001010",
-"110110011010110110101101111001000101000000001010", "110100011010111010101111110001000001001001101110",
-"111100011011111010100110100101001001101011101000", "111100001011111000101110010010010110010000001100"]
+# generate key keySchedule
+keySchedule = []
+a = key
+for i in range(16):
+    keySchedule.append(generateKey(a, i))
+    a = shiftLeft(a, i)
 
-# if (len(key) == 56):
-segments = []
-for i in range(int(len(cipheredText)/64)):
-    segments.append(cipheredText[64*i:64*(i+1)])
+if (len(key) == 56):
+    segments = []
+    for i in range(int(len(cipheredText)/64)):
+        segments.append(cipheredText[64*i:64*(i+1)])
 
-ansSegments = []
-# perform Feistel Cipher for each segment
-for s in segments:
-    s = initialPermutation(s)
-    # 16 rounds of f function
-    for i in range(16):
-        s = roundCalculation(s, 15-i, keySchedule[15-i])
-        # key = shiftLeft(key, i)
-    s = finalPermutation(s)
-    ansSegments.append(s)
-a = ''.join(ansSegments)
-# print(len(ansSegments))
-# print(len(a))
-# print(a)
-# print(a)
-print(bitsToString(a))
-f = open("decipheredText.txt", "w")
-f.write(a)
+    ansSegments = []
+    # perform Feistel Cipher for each segment
+    for s in segments:
+        s = initialPermutation(s)
+        # 16 rounds of f function
+        for i in range(16):
+            # reverse key schedule
+            s = roundCalculation(s, 15-i, keySchedule[15-i])
+            key = shiftLeft(key, i)
+        s = finalPermutation(s)
+        ansSegments.append(s)
+    a = ''.join(ansSegments)
+    # print(len(ansSegments))
+    # print(len(a))
+    # print(a)
+    # print(a)
+    print(bitsToString(a))
+    f = open("decipheredText.txt", "w")
+    f.write(a)
 # else:
 #     print("Please enter a key of length 64 bits.")
 
