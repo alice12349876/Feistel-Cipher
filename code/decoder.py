@@ -2,7 +2,6 @@ import random
 import sys
 import codecs
 
-
 def stringToBits(str):
     stringBit = ""
     for i in range(len(str)):
@@ -19,6 +18,83 @@ def bitsToString(str):
         asciiValue = int(str[i*8:i*8+8], 2)
         finString = finString + chr(asciiValue)
     return finString
+
+def hexToBits(str):
+    stringBit = ""
+    for i in range(len(str)):
+        hexVal = str[i]
+        if hexVal == '0':
+            stringBit += "0000"
+        if hexVal == '1':
+            stringBit += "0001"
+        if hexVal == '2':
+            stringBit += "0010"
+        if hexVal == '3':
+            stringBit += "0011"
+        if hexVal == '4':
+            stringBit += "0100"
+        if hexVal == '5':
+            stringBit += "0101"
+        if hexVal == '6':
+            stringBit += "0110"
+        if hexVal == '7':
+            stringBit += "0111"
+        if hexVal == '8':
+            stringBit += "1000"
+        if hexVal == '9':
+            stringBit += "1001"
+        if hexVal == 'A':
+            stringBit += "1010"
+        if hexVal == 'B':
+            stringBit += "1011"
+        if hexVal == 'C':
+            stringBit += "1100"
+        if hexVal == 'D':
+            stringBit += "1101"
+        if hexVal == 'E':
+            stringBit += "1110"
+        if hexVal == 'F':
+            stringBit += "1111"
+    return stringBit
+
+def bitsToHex(str):
+    finString = ""
+    for i in range(len(str)/4):
+        bitVal = str[i*4:i*4+4]
+        if bitVal == "0000":
+            finString += "0"
+        if bitVal == "0001":
+            finString += "1"
+        if bitVal == "0010":
+            finString += "2"
+        if bitVal == "0011":
+            finString += "3"
+        if bitVal == "0100":
+            finString += "4"
+        if bitVal == "0101":
+            finString += "5"
+        if bitVal == "0110":
+            finString += "6"
+        if bitVal == "0111":
+            finString += "7"
+        if bitVal == "1000":
+            finString += "8"
+        if bitVal == "1001":
+            finString += "9"
+        if bitVal == "1010":
+            finString += "A"
+        if bitVal == "1011":
+            finString += "B"
+        if bitVal == "1100":
+            finString += "C"
+        if bitVal == "1101":
+            finString += "D"
+        if bitVal == "1110":
+            finString += "E"
+        if bitVal == "1111":
+            finString += "F"
+    return finString 
+    
 
 def initialPermutation(stringBit):
     initialArray = [58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7]
