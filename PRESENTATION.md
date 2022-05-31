@@ -1,5 +1,4 @@
 # Feistel Cipher 
-* Feistel Cipher is 
 
 ## History
 * The Feistel Cipher is a block cipher that recursively applies a round function.
