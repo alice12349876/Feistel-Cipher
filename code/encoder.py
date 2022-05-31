@@ -3,60 +3,100 @@ import sys
 import codecs
 
 
-def stringToBits(str):
-    stringBit = ""
-    for i in range(len(str)):
-        asciiValue = ord(str[i])
-        binValue = bin(asciiValue)[2:]
-        for i in range(8 - len(binValue)):
-            binValue = "0" + binValue
-        stringBit = stringBit + binValue
-    return stringBit
+# def stringToBits(string):
+    # stringBit = ""
+    # for i in range(len(str)):
+    #     asciiValue = ord(str[i])
+    #     binValue = bin(asciiValue)[2:]
+    #     for i in range(8 - len(binValue)):
+    #         binValue = "0" + binValue
+    #     stringBit = stringBit + binValue
+    # return stringBit
 
-def bitsToString(str):
-    finString = ""
-    for i in range(int(len(str)/8)):
-        asciiValue = int(str[i*8:i*8+8], 2)
-        finString = finString + chr(asciiValue)
-    return finString
+# def bitsToString(str):
+#     finString = ""
+#     for i in range(int(len(str)/8)):
+#         asciiValue = int(str[i*8:i*8+8], 2)
+#         finString = finString + chr(asciiValue)
+#     return finString
 
 def hexToBits(str):
+    # print(str)
     stringBit = ""
     for i in range(len(str)):
         hexVal = str[i]
         if hexVal == '0':
             stringBit += "0000"
-        if hexVal == '1':
+        elif hexVal == '1':
             stringBit += "0001"
-        if hexVal == '2':
+        elif hexVal == '2':
             stringBit += "0010"
-        if hexVal == '3':
+        elif hexVal == '3':
             stringBit += "0011"
-        if hexVal == '4':
+        elif hexVal == '4':
             stringBit += "0100"
-        if hexVal == '5':
+        elif hexVal == '5':
             stringBit += "0101"
-        if hexVal == '6':
+        elif hexVal == '6':
             stringBit += "0110"
-        if hexVal == '7':
+        elif hexVal == '7':
             stringBit += "0111"
-        if hexVal == '8':
+        elif hexVal == '8':
             stringBit += "1000"
-        if hexVal == '9':
+        elif hexVal == '9':
             stringBit += "1001"
-        if hexVal == 'A':
+        elif hexVal == 'A' or 'a':
             stringBit += "1010"
-        if hexVal == 'B':
+        elif hexVal == 'B' or 'b':
             stringBit += "1011"
-        if hexVal == 'C':
+        elif hexVal == 'C' or 'c':
             stringBit += "1100"
-        if hexVal == 'D':
+        elif hexVal == 'D' or 'd':
             stringBit += "1101"
-        if hexVal == 'E':
+        elif hexVal == 'E' or 'e':
             stringBit += "1110"
-        if hexVal == 'F':
+        elif hexVal == 'F' or 'f':
             stringBit += "1111"
     return stringBit
+
+def bitsToHex(str):
+    finString = ""
+    for i in range(int(len(str)/4)):
+        bitVal = str[i*4:i*4+4]
+        # print(bitVal)
+        if bitVal == "0000":
+            finString += "0"
+        elif bitVal == "0001":
+            finString += "1"
+        elif bitVal == "0010":
+            finString += "2"
+        elif bitVal == "0011":
+            finString += "3"
+        elif bitVal == "0100":
+            finString += "4"
+        elif bitVal == "0101":
+            finString += "5"
+        elif bitVal == "0110":
+            finString += "6"
+        elif bitVal == "0111":
+            finString += "7"
+        elif bitVal == "1000":
+            finString += "8"
+        elif bitVal == "1001":
+            finString += "9"
+        elif bitVal == "1010":
+            finString += "A"
+        elif bitVal == "1011":
+            finString += "B"
+        elif bitVal == "1100":
+            finString += "C"
+        elif bitVal == "1101":
+            finString += "D"
+        elif bitVal == "1110":
+            finString += "E"
+        elif bitVal == "1111":
+            finString += "F"
+    return finString
 
 def initialPermutation(stringBit):
     initialArray = [58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7]
@@ -67,7 +107,7 @@ def initialPermutation(stringBit):
 
 #64 bit -> 64 bit
 def roundCalculation(stringBit, curRound, keyBit):
-    a = stringBit[32:] + xor(ffunction(stringBit[32:], curRound, keyBit), stringBit[0:32])
+    a = stringBit[32:] + xor(ffunction(stringBit[32:], curRound, keyBit), (stringBit[0:32]))
     return a
 
 def ffunction(right, curRound, keyBit):
@@ -75,14 +115,14 @@ def ffunction(right, curRound, keyBit):
     a = xor(a, generateKey(keyBit, curRound))
     a = sbox(a)
     a = straightPerm(a)
-    return a
+    return a[0:32]
 
 def xor(str1, str2):
     s = ""
     # print(len(str1))
     # print(len(str2))
     for i in range(len(str1)):
-        if str1[i]==str2[i]:
+        if int(str1[i])==int(str2[i]):
             s += "0"
         else:
             s += "1"
@@ -93,19 +133,21 @@ def expansion(right):
     newString = ""
     for i in expanArray:
         newString = newString + right[i-1]
+    print("Expansion Box")
+    print(newString)
     return newString
 
 def sbox(a):
     # a is a 48 bit input
     # each S box corresponds to one group of 8-bit input
-    sboxArray = [[[14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7], [0, 15, 7, 4, 14, 2, 13, 10, 3, 6, 12, 11, 9, 5, 3, 8], [4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0], [15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13]],
-    [[15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10], [3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5], [0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15], [13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9]],
-    [[10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8], [13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1], [13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7], [1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12]],
-    [[7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15], [13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9], [10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4], [3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14]],
-    [[2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9], [14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6], [4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14], [11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3]],
-    [[12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11], [10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8], [9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6], [4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13]],
-    [[4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1], [13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6], [1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2], [6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12]],
-    [[13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7], [1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 10, 14, 9, 2], [7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 10, 15, 3, 5, 8], [2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 9, 3, 5, 6, 11]]
+    sboxArray = [[[14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7], [0,15,7,4,14,2,13,1,10,6,12,11,9,5,3,8], [4,1,14,8,13,6,2,11,15,12,9,7,3,10,5,0], [15,12,8,2,4,9,1,7,5,11,3,14,10,0,6,13]],
+    [[15,1,8,14,6,11,3,4,9,7,2,13,12,0,5,10], [3,13,4,7,15,2,8,14,12,0,1,10,6,9,11,5], [0,14,7,11,10,4,13,1,5,8,12,6,9,3,2,15], [13,8,10,1,3,15,4,2,11,6,7,12,0,5,14,9]],
+    [[10,0,9,14,6,3,15,5,1,13,12,7,11,4,2,8], [13,7,0,9,3,4,6,10,2,8,5,14,12,11,15,1], [13,6,4,9,8,15,3,0,11,1,2,12,5,10,14,7], [1,10,13,0,6,9,8,7,4,15,14,3,11,5,2,12]],
+    [[7,13,14,3,0,6,9,10,1,2,8,5,11,12,4,15], [13,8,11,5,6,15,0,3,4,7,2,12,1,10,14,9], [10,6,9,0,12,11,7,13,15,1,3,14,5,2,8,4], [3,15,0,6,10,1,13,8,9,4,5,11,12,7,2,14]],
+    [[2,12,4,1,7,10,11,6,8,5,3,15,13,0,14,9], [14,11,2,12,4,7,13,1,5,0,15,10,3,9,8,6], [4,2,1,11,10,13,7,8,15,9,12,5,6,3,0,14], [11,8,12,7,1,14,2,13,6,15,0,9,10,4,5,3]],
+    [[12,1,10,15,9,2,6,8,0,13,3,4,14,7,5,11], [10,15,4,2,7,12,9,5,6,1,13,14,0,11,3,8], [9,14,15,5,2,8,12,3,7,0,4,10,1,13,11,6], [4,3,2,12,9,5,15,10,11,14,1,7,6,0,8,13]],
+    [[4,11,2,14,15,0,8,13,3,12,9,7,5,10,6,1], [13,0,11,7,4,9,1,10,14,3,5,12,2,15,8,6], [1,4,11,13,12,3,7,14,10,15,6,8,0,5,9,2], [6,11,13,8,1,4,10,7,9,5,0,15,14,2,3,12]],
+    [[13,2,8,4,6,15,11,1,10,9,3,14,5,0,12,7], [1,15,13,8,10,3,7,4,12,5,6,11,0,14,9,2], [7,11,4,1,9,12,14,2,0,6,10,13,15,3,5,8], [2,1,14,7,4,10,8,13,15,12,9,0,3,5,6,11]]
     ]
     newString = ""
     row = 0
@@ -126,6 +168,8 @@ def sbox(a):
         # print("-------")
         newString = newString + b
     # print(len(newString))
+    print("S Box")
+    print(newString)
     return newString
 
 def straightPerm(a):
@@ -133,6 +177,8 @@ def straightPerm(a):
     newString = ""
     for i in permArray:
         newString = newString + a[i-1]
+    print("straightPerm")
+    print(newString)
     return newString
 
 
@@ -141,6 +187,8 @@ def finalPermutation(stringBit):
     newString = ""
     for i in finalArray:
         newString = newString + stringBit[i-1]
+    print("finalPermutation")
+    print(newString)
     return newString
 
 # code for key generation
@@ -149,7 +197,6 @@ def generateKey(keyBit, round):
     a = shiftLeft(keyBit, round)
     a = compressionBox(a)
     # print(round)
-    print(a)
     return a
 
 def parityDrop(keyBit):
@@ -206,16 +253,30 @@ def compressionBox(keyBit):
 #         finalBits = finalBits + x
 #     return bitsToString(finalBits)
 
-try:
-    plainText = stringToBits(sys.argv[1])
-    # apend 0s to the end to make len(plainText) a multiple of 64. This will make the operations below easier to handle
-    if (len(plainText)%64 != 0):
-        for i in range(64-len(plainText)%64):
-            plainText += "0"
-    key = stringToBits(sys.argv[2])
-    key = parityDrop(key)
-except:
-    print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
+# try:
+text = sys.argv[1]
+byteText = text.encode('utf-8')
+hexText = str(byteText.hex())
+plainText = hexToBits(hexText)
+# print(hexText)
+# print(bitsToHex(plainText))
+
+if (len(plainText)%64 != 0):
+    for i in range(64-len(plainText)%64):
+        plainText += "0"
+# print(bitsToHex(plainText))
+
+k = sys.argv[2]
+byteK = k.encode('utf-8')
+hexK = str(byteK.hex())
+key = hexToBits(hexK)
+key = parityDrop(key)
+# print(key)
+# print(hexK)
+# print(bitsToHex(key))
+# print(bitsToHex(key))
+# except:
+#     print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
 
 # encoder using Feistel Cipher
 if (len(key) == 56):
@@ -230,8 +291,11 @@ if (len(key) == 56):
         s = initialPermutation(s)
         # 16 rounds of f function
         for i in range(16):
+            print("Round", i)
             s = roundCalculation(s, i, key)
             key = shiftLeft(key, i)
+            print("Encoder " + str(i))
+            print(s)
         s = finalPermutation(s)
         ansSegments.append(s)
     a = ''.join(ansSegments)
@@ -239,9 +303,11 @@ if (len(key) == 56):
     # print(len(a))
     # print(a)
     # print(a)
-    print(bitsToString(a))
+    print(a)
+    print(bitsToHex(a))
     f = open("cipheredText.txt", "w")
     f.write(a)
+    print(xor("00111110001011111001100001111111", "00000000111111111000000001100110"))
 
 else:
     print("Please enter a key of length 64 bits.")
