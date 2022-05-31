@@ -1,11 +1,12 @@
 # Feistel Cipher 
-The Feistel Cipher is a block encryption algorithm that recursively applies a round function, where each round uses a subkey generated through a subkey generation algorithm from the key.
+The Feistel Cipher is a block encryption algorithm that recursively applies a round function, where each round uses a subkey generated through a subkey generation algorithm from the key. The recursion of a Feistel Cipher makes hardware implementation easier.
 
 ## History
-* The Feistel Cipher is a block cipher that recursively applies a round function.
-* Feistel cipher first gained respect when it was adopted by the US Government, and used within the National Security Agency.
-* The recursion of the feistel cipher makes the hardware for the cipher easier to implement.
-* While research shows that 3 rounds are enough for pseudorandom encryption, 4 rounds are enough for "strong" pseudorandom encryption.
+* The concept of a Feistel Cipher first originated in the early 1970's when IBM attempted to develop secure banking systems. This resulted in the Lucifer. 
+* In 1973, NIST requested national symmetric key cryptosystem algorithms. In response to this, IBM modified the Lucifer to create the Data Encryption Standard, the most common algorithm of the Feistel Cipher. 
+* DES was published as the Federal Information Processing System in _The Federal Register_ in March 1975, but people worried that the key bit size was too small and S-boxes would allow messages to be decrypted without a key.
+* DES gained respect when it was adopted by the US Government, and used within the National Security Agency.
+* Finally, DES was published in _The Federal Register_ as FIPS 46 in January 1977.
 
 ## Security Strength
 * Key Size: A larger key size means more security.
