@@ -14,5 +14,9 @@ python3 decoder.py [Key of length 64 bits]
 ```
 decoder.py will read in ciphertext from cipheredText.txt and can successfully decode the ciphertext if the same key used for encryption is provided.
 ## Other Resources
+<<<<<<< HEAD
 [Presentation](PRESENTATION.md)\
+=======
+[Presentation](PRESENTATION.md)
+>>>>>>> 71fe8a8bad25df2f93b11f2c804b4fdadb1f7d88
 [Homework](HOMEWORK.md)
