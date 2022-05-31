@@ -253,7 +253,6 @@ if (len(key) == 56):
         s = initialPermutation(s)
         # 16 rounds of f function
         for i in range(16):
-            # print("Round", i)
             s = roundCalculation(s, i, key)
             key = shiftLeft(key, i)
         s = finalPermutation(s)

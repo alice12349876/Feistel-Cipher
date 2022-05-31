@@ -252,8 +252,9 @@ if (len(key) == 56):
         s = initialPermutation(s)
         # 16 rounds of f function
         for i in range(16):
-            # reverse key schedule
-            s = roundCalculation(s, 15-i, keySchedule[15-i])
+            # ______Complete the code here______
+            # Remember to use reverse key schedule!
+            # No clue? Check out encoder.py.
         s = finalPermutation(s)
         ansSegments.append(s)
     a = ''.join(ansSegments)
