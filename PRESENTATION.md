@@ -60,9 +60,9 @@
 <center>Compression D-Box</center>
 
 ## Strengths
-* Involution Property
-* Similar encryption and decryption algorithms
-* F does not have to be invertible
+* The Feistel Cipher has multiple rounds, allowing for more security with a smaller key bit size.
+* The Feistel Cipher has similar encryption and decryption algorithms, and uses the same sub-keys, in a reverse order.
+* While algorithms such as DES is invertible, the F function does not have to be invertible, meaning that the ciphertext cannot be decrypted.
 
 ## Weaknesses
 * Weak and semi-weak keys: Block ciphers are often used in hash modes where the key input can be chosen by hackers in an attempt to find collisions.
