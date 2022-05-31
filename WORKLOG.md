@@ -3,7 +3,7 @@ Alice: I worked on History.\
 Si Ying: I worked on Variations.
 
 ## May 20th, 21st, 22nd, Friday and Weekends
-Alice: I worked on Hhistory and Strengths.\
+Alice: I worked on History and Strengths.\
 Si Ying: I worked on Variations and Weaknesses.
 
 ## May 23rd, Monday
@@ -11,8 +11,8 @@ Alice: I worked on History and Strengths and uploaded notes to presentation.\
 Si Ying: I worked on Variations and Weaknesses and uploaded notes to presentation.
 
 ## May 24th, Tuesday
-Alice: I researched on encryption algorithms and the structure of the Feistel Cipher. \
-Si Ying: I researched on encryption algorithms and the structure of the Feistel Cipher.
+Alice: I researched encryption algorithms and the structure of the Feistel Cipher. \
+Si Ying: I researched encryption algorithms and the structure of the Feistel Cipher.
 
 ## May 25th, Wednesday
 Alice: I worked on key generation and permutation algorithm. We finished a simpler version of encoder and decided to tackle more complex version of Data Encryption Standard. \
