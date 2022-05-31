@@ -1,8 +1,8 @@
 ## Feistel Cipher
-This project covers the history, strengths, and weaknesses of Feistel Cipher. In addition, this project dives deeper into the structure and algorithms of Feistel Cipher, with an encoder and decoder.
+This project covers the history, strengths, and weaknesses of Feistel Cipher. In addition, this project dives deeper into the structure and algorithms of Feistel Cipher, with the implementation of an encoder and decoder.
 
 ## How to Use This
-The Feistel Cipher encoder and decoder (encoder.py and decoder.py respectively) are coded in Python, and they can be found in the code directory. There is no need to install third-party libraries. \
+The Data Encryption Standard (DES) encoder and decoder (encoder.py and decoder.py respectively) are coded in Python, and they can be found in the code directory. There is no need to install third-party libraries. \
 To run encoder.py, make sure you are in the right directory and run the following command:
 ```
 python3 encoder.py [Plain Text] [Key of length 64 bits]
