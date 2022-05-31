@@ -1,4 +1,5 @@
 # Feistel Cipher 
+The Feistel Cipher is a block encryption algorithm that recursively applies a round function, where each round uses a subkey generated through a subkey generation algorithm from the key.
 
 ## History
 * The Feistel Cipher is a block cipher that recursively applies a round function.
