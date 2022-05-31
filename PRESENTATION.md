@@ -61,7 +61,8 @@ The Feistel Cipher is a block encryption algorithm that recursively applies a ro
 ![Key Compression](img/keyCompression.png)
 <center>Compression D-Box</center>
 
-\![DES Decryption](img/DES Decryption.png)
+\
+![DES Decryption](img/DESDecryption.png)
 <center>DES Decryption</center>
 
 ## Strengths
