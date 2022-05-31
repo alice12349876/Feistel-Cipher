@@ -1,13 +1,28 @@
-# Feistel Cipher
+# Feistel Cipher 
+* Feistel Cipher is 
+
 ## History
 * The Feistel Cipher is a block cipher that recursively applies a round function.
 * Feistel cipher first gained respect when it was adopted by the US Government, and used within the National Security Agency.
 * The recursion of the feistel cipher makes the hardware for the cipher easier to implement.
 * While research shows that 3 rounds are enough for pseudorandom encryption, 4 rounds are enough for "strong" pseudorandom encryption.
 
+## Security Strength
+* Key Size: A larger key size means more security.
+* Block Size: A larger block size means more security.
+* Subkey Generation: Increasing the complexity in how the subkeys are generated from the key increases security.
+* Rounds: Increasing the number of rounds, or the number of times a round function is applied, increases security.
+
+## Data Encryption Standard (DES)
+* The Data Encryption Standard is the most famous type of Feistel Cipher, and was the most popular encryption method in the 1970s-1990s.
+* 64 bit input block
+* 64 bit output block
+* 64 bit key
+* 16 rounds
+
 ## Basic Structure
 ![Feistel Cipher Structure](img/BasicStructure.png)
-<center>Feistel Cipher Basic Structure</center>
+<center>Data Encryption Standard Basic Structure</center>
 
 \
 ![Initial and Final Permutation Table](img/PermutationTables.png)
