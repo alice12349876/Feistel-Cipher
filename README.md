@@ -12,7 +12,7 @@ To run decoder.py, make sure you are in the right directory and run the followin
 ```
 python3 decoder.py [Key of length 64 bits]
 ```
-decoder.py will read in ciphertext from cipheredText.txt and can successfully decode the ciphertext if the same key used for encryption is provided. \
+decoder.py will read in ciphertext from cipheredText.txt and can successfully decode the ciphertext if the same key used for encryption is provided.
 ## Other Resources
-[Presentation](PRESENTATION.md) \
+[Presentation](PRESENTATION.md)\
 [Homework](HOMEWORK.md)
