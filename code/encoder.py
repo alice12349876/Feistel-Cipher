@@ -253,30 +253,30 @@ def compressionBox(keyBit):
 #         finalBits = finalBits + x
 #     return bitsToString(finalBits)
 
-# try:
-text = sys.argv[1]
-byteText = text.encode('utf-8')
-hexText = str(byteText.hex())
-plainText = hexToBits(hexText)
+try:
+    text = sys.argv[1]
+    byteText = text.encode('utf-8')
+    hexText = str(byteText.hex())
+    plainText = hexToBits(hexText)
 # print(hexText)
 # print(bitsToHex(plainText))
 
-if (len(plainText)%64 != 0):
-    for i in range(64-len(plainText)%64):
-        plainText += "0"
+    if (len(plainText)%64 != 0):
+        for i in range(64-len(plainText)%64):
+            plainText += "0"
 # print(bitsToHex(plainText))
 
-k = sys.argv[2]
-byteK = k.encode('utf-8')
-hexK = str(byteK.hex())
-key = hexToBits(hexK)
-key = parityDrop(key)
+    k = sys.argv[2]
+    byteK = k.encode('utf-8')
+    hexK = str(byteK.hex())
+    key = hexToBits(hexK)
+    key = parityDrop(key)
 # print(key)
 # print(hexK)
 # print(bitsToHex(key))
 # print(bitsToHex(key))
-# except:
-#     print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
+except:
+    print("Please follow this format: python3 encoder.py [Plain Text] [Key of length 64 bits]")
 
 # encoder using Feistel Cipher
 if (len(key) == 56):
