@@ -51,4 +51,4 @@ https://www.youtube.com/watch?v=l-7YW06BFNs \
 https://www.computerhope.com/jargon/d/differ-crypt.htm#:~:text=Differential%20cryptanalysis%20is%20a%20branch,results%20in%20the%20encrypted%20ciphertext \
 https://en.wikipedia.org/wiki/Substitution%E2%80%93permutation_network \
 https://www.techtarget.com/searchsecurity/definition/Data-Encryption-Standard#:~:text=The%20Data%20Encryption%20Standard%20is,it%20into%2064%2Dbit%20blocks \
-https://en.wikipedia.org/wiki/Twofish \
+https://en.wikipedia.org/wiki/Twofish
