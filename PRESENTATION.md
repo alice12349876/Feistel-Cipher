@@ -61,6 +61,9 @@ The Feistel Cipher is a block encryption algorithm that recursively applies a ro
 ![Key Compression](img/keyCompression.png)
 <center>Compression D-Box</center>
 
+\![DES Decryption](img/DES Decryption.png)
+<center>DES Decryption</center>
+
 ## Strengths
 * The Feistel Cipher has multiple rounds, allowing for more security with a smaller key bit size.
 * The Feistel Cipher has similar encryption and decryption algorithms, and uses the same sub-keys, in a reverse order.
