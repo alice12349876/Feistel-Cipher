@@ -35,8 +35,8 @@ Alice: I coded the initial permutation and final permutation of the algorithm. I
 Si Ying: I debugged Alice's code, since the permutation tables start with index 1 while arrays in Python start with index 0. I also added the key generation code, which consisted of a parity drop, shifting left, and compression box. I also implemented the Feistel Cipher by putting together our existing functions, and padding bits where strings are not a length of multiple 64.
 
 ## May 30th, Monday
-Alice: I tested the code and debugged decoder to make sure everything was running smoothly, and we did not miss any cases. I finished up my notes for the presentation, made the homework by taking our code and leaving parts blank for the class to fill in, and ran through everything.\
-Si Ying: I finished up debugging the code by fixing the s-box, coded the decoder, and tested the code to make sure we did not miss any cases. I also finished up my notes for the presentation, made the homework by taking our code and leaving parts blank for the class to fill in, and ran through everything.
+Alice: I tested the code and debugged decoder to make sure everything was running smoothly, and we did not miss any cases. I finished up my notes for the presentation, made the homework, and ran through everything.\
+Si Ying: I finished up debugging the code by fixing the s-box, coded the decoder, and tested the code to make sure we did not miss any cases. I also finished up my notes for the presentation, made the homework, and ran through everything.
 
 
 ## Sources
