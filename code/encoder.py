@@ -3,22 +3,22 @@ import sys
 import codecs
 
 
-# def stringToBits(string):
-    # stringBit = ""
-    # for i in range(len(str)):
-    #     asciiValue = ord(str[i])
-    #     binValue = bin(asciiValue)[2:]
-    #     for i in range(8 - len(binValue)):
-    #         binValue = "0" + binValue
-    #     stringBit = stringBit + binValue
-    # return stringBit
+def stringToBits(string):
+    stringBit = ""
+    for i in range(len(str)):
+        asciiValue = ord(str[i])
+        binValue = bin(asciiValue)[2:]
+        for i in range(8 - len(binValue)):
+            binValue = "0" + binValue
+        stringBit = stringBit + binValue
+    return stringBit
 
-# def bitsToString(str):
-#     finString = ""
-#     for i in range(int(len(str)/8)):
-#         asciiValue = int(str[i*8:i*8+8], 2)
-#         finString = finString + chr(asciiValue)
-#     return finString
+def bitsToString(str):
+    finString = ""
+    for i in range(int(len(str)/8)):
+        asciiValue = int(str[i*8:i*8+8], 2)
+        finString = finString + chr(asciiValue)
+    return finString
 
 def hexToBits(str):
     # print(str)
@@ -289,14 +289,11 @@ if (len(key) == 56):
     # perform Feistel Cipher for each segment
     for s in segments:
         s = initialPermutation(s)
-        print(s[0:32], " ", s[32:])
         # 16 rounds of f function
         for i in range(16):
             # print("Round", i)
             s = roundCalculation(s, i, key)
             key = shiftLeft(key, i)
-            print("Encoder " + str(i) )
-            print(s[0:32], " ", s[32:])
         s = finalPermutation(s)
         ansSegments.append(s)
     a = ''.join(ansSegments)
@@ -304,11 +301,8 @@ if (len(key) == 56):
     # print(len(a))
     # print(a)
     # print(a)
-    print(a)
-    print(bitsToHex(a))
     f = open("cipheredText.txt", "w")
     f.write(a)
-    print(xor("00111110001011111001100001111111", "00000000111111111000000001100110"))
 
 else:
     print("Please enter a key of length 64 bits.")
