@@ -6,10 +6,17 @@ Read through encoder.py and decoder.py, and complete the decoder based on what y
 
 The key is stuy2022. What is the deciphered text? 
 
-#2. Use the completed decoder.py to decode this message: "1011100001011011010111000110001100011010111000101101010111000101" (which you should put in the [cipheredText.txt](cipheredText.txt) file).
+#2. Use the completed decoder.py to decode this message: "01000110000001001100001000011101101100000110000000110010100010010110001100000010011101001001011110011100011101001101100010000000" (which you should put in the [cipheredText.txt](cipheredText.txt) file).
 
 The key is the deciphered text from #1. 
 
-Submit the missing code of decoder.py and your deciphered message as a .txt file on Google Classroom.
+#3. Use the completed decoder.py to decode this message: "01000111110011110001101000011011000110000111111110010001111101001110011001000000010011001011001000001010111001100011010001111111" (which you should put in the [cipheredText.txt](cipheredText.txt) file).
+
+The key is the first 64 bits of the deciphered text from #2. 
+
+Submit the missing code of decoder.py and your above answers as a .txt file on Google Classroom.
 
 
+#4. Use the completed decoder.py to decode the final message: "10001100011111001110001011111001011101010000011100110111111100100111011110011100100011111101011001111111010110110010101010000100" (which you should put in the [cipheredText.txt](cipheredText.txt) file).
+
+The key is the first 64 bits of the deciphered text from #2. 
